@@ -1,4 +1,4 @@
-package com.myfirstownapp.beeapp
+package com.myfirstownapp.beeapp.user
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RestController
 class UserController(private val serviceUser: UserDbService) {
 
     @GetMapping(value = ["getUsers"])
-    fun getUsers(): MutableList<User> = serviceUser.getAllUsers()
+    fun getUsers(): List<User> = serviceUser.getAllUsers()
 }

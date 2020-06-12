@@ -1,7 +1,7 @@
-package com.myfirstownapp.beeapp
+package com.myfirstownapp.beeapp.user
 
 import org.springframework.data.repository.CrudRepository
 
 interface UserRepository : CrudRepository<User, Long> {
-    override fun findAll(): MutableList<User>
+    override fun findAll(): List<User>
 }
