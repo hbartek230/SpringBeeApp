@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/beeapp/users")
+@RequestMapping("/users")
 class UserController(private val serviceUser: UserDbService) {
 
-    @GetMapping(value = ["getUsers"])
+    @GetMapping
     fun getUsers(): List<User> = serviceUser.getAllUsers()
 }

@@ -4,7 +4,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "harvest")
-data class Harvest (
+data class Harvest(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         val id: Long = 0,
