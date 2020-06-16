@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.*
 class HarvestController(private val service: HarvestDbService) {
 
     @GetMapping
-    fun getHarvestByKind(@RequestParam(required = false) kind: String?): List<Harvest> {
+    fun getHarvestByKind(@RequestParam(required = false) kind: String?): List<HarvestDto> {
         return service.getHarvestByKind(kind)
     }
 
     @PostMapping(value = ["add"], consumes = [APPLICATION_JSON_VALUE])
-    fun addHarvest(@RequestBody harvest: Harvest): Harvest = service.addHarvest(harvest)
+    fun addHarvest(@RequestBody harvestRequest: AddHarvestRequest): Harvest =
+            service.addHarvest(harvestRequest)
 
 }
