@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.*
 class HarvestController(private val service: HarvestDbService) {
 
     @GetMapping
-    fun getAllHarvest(): List<Harvest> = service.getAllHarvest()
-
-    @GetMapping(value = ["search"])
-    fun getHarvestByKind(@RequestParam("kind") kind: String): List<Harvest> {
+    fun getHarvestByKind(@RequestParam(required = false) kind: String?): List<Harvest> {
         return service.getHarvestByKind(kind)
     }
 
