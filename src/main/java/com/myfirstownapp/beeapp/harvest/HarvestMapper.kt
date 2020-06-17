@@ -8,14 +8,14 @@ class HarvestMapper {
     fun mapToHarvestDto(harvestRequest: AddHarvestRequest): HarvestDto {
         return HarvestDto(
                 kilograms = harvestRequest.kilograms,
-                kind = harvestRequest.kind.name,
+                kind = harvestRequest.kind.honeyKindName,
                 glasses = harvestRequest.glasses
         )
     }
 
     fun mapToHarvest(harvestDto: HarvestDto): Harvest {
         return Harvest(harvestDto.id,
-                HoneyKind.valueOf(harvestDto.kind),
+                HoneyKind.findKindByName(harvestDto.kind),
                 harvestDto.kilograms,
                 harvestDto.glasses
         )
