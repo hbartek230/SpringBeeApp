@@ -1,4 +1,4 @@
-package com.myfirstownapp.beeapp
+package com.myfirstownapp.beeapp.user
 
 import javax.persistence.*
 
