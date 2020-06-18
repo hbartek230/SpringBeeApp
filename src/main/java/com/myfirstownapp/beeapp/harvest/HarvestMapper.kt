@@ -4,20 +4,36 @@ import org.springframework.stereotype.Component
 
 @Component
 class HarvestMapper {
-
-    fun mapToHarvestDto(harvestRequest: AddHarvestRequest): HarvestDto {
+    fun mapRequestToHarvestDto(addRequest: AddHarvestRequest): HarvestDto{
         return HarvestDto(
-                kilograms = harvestRequest.kilograms,
-                kind = harvestRequest.kind.honeyKindName,
-                glasses = harvestRequest.glasses
+                userId = addRequest.userId,
+                honeyId = addRequest.honeyId,
+                honeyUnits = addRequest.honeyUnits,
+                honeyPacks = addRequest.honeyPacks
         )
     }
 
-    fun mapToHarvest(harvestDto: HarvestDto): Harvest {
-        return Harvest(harvestDto.id,
-                HoneyKind.findKindByName(harvestDto.kind),
-                harvestDto.kilograms,
-                harvestDto.glasses
+    fun mapToHarvestDto(harvestDomain: HarvestDomain): HarvestDto {
+        return HarvestDto(
+                harvestDomain.id,
+                harvestDomain.userId,
+                harvestDomain.honeyId,
+                harvestDomain.honeyUnits,
+                harvestDomain.honeyPacks
         )
+    }
+
+    fun mapToHarvestDomain(harvestDto: HarvestDto): HarvestDomain {
+        return HarvestDomain(
+                harvestDto.id,
+                harvestDto.userId,
+                harvestDto.honeyId,
+                harvestDto.honeyUnits,
+                harvestDto.honeyPacks
+        )
+    }
+
+    fun mapToHarvestModelList(harvestDtoList: List<HarvestDto>): List<HarvestDomain> {
+        return harvestDtoList.map { t -> HarvestDomain(t.id, t.userId, t.honeyId, t.honeyUnits, t.honeyPacks) }
     }
 }

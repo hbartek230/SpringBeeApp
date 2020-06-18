@@ -5,15 +5,18 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/harvest")
-class HarvestController(private val service: HarvestDbService) {
+class HarvestController (
+        private val service: HarvestDbService,
+        private val mapper: HarvestMapper
+){
 
     @GetMapping
-    fun getHarvestByKind(@RequestParam(required = false) kind: String?): List<HarvestDto> {
-        return service.getHarvestByKind(kind)
+    fun getHarvestByKind(@RequestParam(required = false) honeyId: Long?) : List<HarvestDomain> {
+        return mapper.mapToHarvestModelList(service.loadHarvest(honeyId))
     }
 
-    @PostMapping(value = ["add"], consumes = [APPLICATION_JSON_VALUE])
-    fun addHarvest(@RequestBody harvestRequest: AddHarvestRequest): Harvest =
-            service.addHarvest(harvestRequest)
-
+    @PostMapping(consumes = [APPLICATION_JSON_VALUE])
+    fun uploadHoneyData(@RequestBody harvestRequest: AddHarvestRequest){
+        service.addHarvest(harvestRequest)
+    }
 }

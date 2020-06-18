@@ -1,12 +1,12 @@
-package com.myfirstownapp.beeapp.harvest
+package com.myfirstownapp.beeapp.summary
 
 import javax.persistence.*
 
 @Entity
-@Table(name = "harvest")
-data class HarvestDto(
+@Table(name = "harvest_summary")
+data class HoneySummaryDto(
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "id", unique = true)
         val id: Long = 0,
 

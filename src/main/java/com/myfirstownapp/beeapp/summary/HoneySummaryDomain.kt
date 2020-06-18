@@ -1,6 +1,7 @@
-package com.myfirstownapp.beeapp.harvest
+package com.myfirstownapp.beeapp.summary
 
-data class AddHarvestRequest(
+class HoneySummaryDomain(
+        val id: Long = 0,
         val userId: Long,
         val honeyId: Long,
         val honeyUnits: Long,
