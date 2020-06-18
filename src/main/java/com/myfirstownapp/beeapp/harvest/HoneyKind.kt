@@ -1,7 +1,5 @@
 package com.myfirstownapp.beeapp.harvest
 
-import java.lang.IllegalArgumentException
-
 enum class HoneyKind(
         val honeyKindName: String
 ) {
