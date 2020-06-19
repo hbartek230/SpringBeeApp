@@ -12,7 +12,7 @@ class HarvestController (
 
     @GetMapping
     fun getHarvestByKind(@RequestParam(required = false) honeyId: Long?) : List<HarvestDomain> {
-        return mapper.mapToHarvestModelList(service.loadHarvest(honeyId))
+        return mapper.mapToHarvestDomainList(service.loadHarvest(honeyId))
     }
 
     @PostMapping(consumes = [APPLICATION_JSON_VALUE])

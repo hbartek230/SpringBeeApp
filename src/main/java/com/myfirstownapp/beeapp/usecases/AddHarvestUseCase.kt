@@ -24,7 +24,7 @@ class AddHarvestUseCase(
 
     private fun addOrUpdateHoneySummary(addRequest: AddHarvestRequest) {
         val updatedHoneyState: HoneySummaryDomain =
-                if (honeySummaryRepository.existsByHoneyIdAndUserId(addRequest.honeyId, addRequest.userId)) {
+                if (honeySummaryRepository.existsByUserIdAndHoneyId(addRequest.userId, addRequest.honeyId)) {
             updateExistingHoney(addRequest)
         } else {
             createHoneySummary(addRequest)
@@ -34,7 +34,7 @@ class AddHarvestUseCase(
 
     private fun updateExistingHoney(addRequest: AddHarvestRequest): HoneySummaryDomain {
         val actualHoneyState: HoneySummaryDomain = summaryMapper.mapToHoneySummaryDomain(honeySummaryRepository
-                .findByHoneyIdAndUserId(addRequest.honeyId, addRequest.userId))
+                .findByUserIdAndHoneyId(addRequest.userId, addRequest.honeyId))
         return actualHoneyState.copy(
                 honeyUnits = actualHoneyState.honeyUnits + addRequest.honeyUnits,
                 honeyPacks = actualHoneyState.honeyPacks + addRequest.honeyPacks

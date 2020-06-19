@@ -23,4 +23,9 @@ class HoneySummaryMapper {
                 honeySummaryDomain.honeyPacks
         )
     }
+
+    fun mapToHoneySummaryDomainList(honeySummaryDtoList: List<HoneySummaryDto>): List<HoneySummaryDomain> {
+        return honeySummaryDtoList
+                .map { t -> HoneySummaryDomain(t.id, t.userId, t.honeyId, t.honeyUnits, t.honeyPacks) }
+    }
 }

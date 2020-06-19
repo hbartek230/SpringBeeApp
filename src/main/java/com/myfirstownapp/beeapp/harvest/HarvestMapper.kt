@@ -33,7 +33,7 @@ class HarvestMapper {
         )
     }
 
-    fun mapToHarvestModelList(harvestDtoList: List<HarvestDto>): List<HarvestDomain> {
+    fun mapToHarvestDomainList(harvestDtoList: List<HarvestDto>): List<HarvestDomain> {
         return harvestDtoList.map { t -> HarvestDomain(t.id, t.userId, t.honeyId, t.honeyUnits, t.honeyPacks) }
     }
 }
