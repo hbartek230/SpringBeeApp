@@ -1,7 +1,7 @@
 package com.myfirstownapp.beeapp.summary
 
-class HoneySummaryDomain(
-        val id: Long = 0,
+data class HoneySummaryDomain(
+        val id: Long? = null,
         val userId: Long,
         val honeyId: Long,
         val honeyUnits: Long,

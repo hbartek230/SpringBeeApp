@@ -6,11 +6,10 @@ import org.springframework.stereotype.Service
 
 @Service
 class HarvestDbService(
-        private val mapper: HarvestMapper,
         private val loadHarvestUseCase: LoadHarvestUseCase,
         private val addHarvestUseCase: AddHarvestUseCase
 ) {
     fun loadHarvest(honeyId: Long?): List<HarvestDto> = loadHarvestUseCase.invoke(honeyId)
 
-    fun addHarvest(addRequest: AddHarvestRequest) = addHarvestUseCase.invoke(addRequest, mapper)
+    fun addHarvest(addRequest: AddHarvestRequest) = addHarvestUseCase.invoke(addRequest)
 }

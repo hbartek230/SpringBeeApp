@@ -16,7 +16,7 @@ class HoneySummaryMapper {
 
     fun mapToHoneySummaryDto(honeySummaryDomain: HoneySummaryDomain): HoneySummaryDto {
         return HoneySummaryDto(
-                honeySummaryDomain.id,
+                honeySummaryDomain.id ?: 0,
                 honeySummaryDomain.userId,
                 honeySummaryDomain.honeyId,
                 honeySummaryDomain.honeyUnits,
